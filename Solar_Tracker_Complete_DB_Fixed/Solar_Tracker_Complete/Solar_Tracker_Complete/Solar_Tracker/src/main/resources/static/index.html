@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Rooftop Solar Usage Tracker</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><h1>☀️ Community Rooftop Solar Usage Tracker</h1></header>
+
+<div class="dashboard">
+    <div class="stat-card"><h3>Installations</h3><p id="totalInstallations">0</p></div>
+    <div class="stat-card"><h3>Households</h3><p id="totalHouseholds">0</p></div>
+    <div class="stat-card"><h3>Generation Logs</h3><p id="totalGeneration">0</p></div>
+    <div class="stat-card"><h3>Consumption Logs</h3><p id="totalConsumption">0</p></div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>Add Installation</h2>
+        <input type="text" id="installationLocation" placeholder="Installation Location">
+        <input type="number" id="capacityKw" placeholder="Capacity (kW)" min="0.001" step="0.001">
+        <button onclick="addInstallation()">Save Installation</button>
+    </div>
+
+    <div class="card">
+        <h2>Add Household</h2>
+        <select id="installationId"><option value="">Select installation</option></select>
+        <input type="text" id="householdName" placeholder="Household Name">
+        <input type="number" id="allocationRatio" placeholder="Allocation (%) - optional" min="0.01" max="100" step="0.01">
+        <button onclick="addHousehold()">Save Household</button>
+    </div>
+
+    <div class="card">
+        <h2>Daily Generation Log</h2>
+        <select id="genInstallationId"><option value="">Select installation</option></select>
+        <input type="date" id="genDate">
+        <input type="number" id="unitsGenerated" placeholder="Generated Units (kWh)" min="0" step="0.001">
+        <button onclick="addGeneration()">Save Generation</button>
+    </div>
+
+    <div class="card">
+        <h2>Daily Consumption Log</h2>
+        <select id="householdId"><option value="">Select household</option></select>
+        <input type="date" id="consDate">
+        <input type="number" id="unitsConsumed" placeholder="Consumed Units (kWh)" min="0" step="0.001">
+        <button onclick="addConsumption()">Save Consumption</button>
+    </div>
+
+    <div class="card">
+        <h2>Monthly Summary</h2>
+        <select id="summaryHousehold"><option value="">Select household</option></select>
+        <input type="number" id="year" placeholder="Year" min="2000" max="2100">
+        <input type="number" id="month" placeholder="Month" min="1" max="12">
+        <button onclick="getSummary()">Get Summary</button>
+        <div id="summaryResult"></div>
+    </div>
+</div>
+
+<footer>Community Rooftop Solar Usage Tracker © 2026</footer>
+<script src="/script.js"></script>
+</body>
+</html>
